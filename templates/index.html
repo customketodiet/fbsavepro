@@ -1,1 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FBSave Pro – Free Facebook Video Downloader | HD & SD | Public & Private</title>
+<meta name="description" content="Download Facebook videos in HD and SD instantly. Supports public and private videos, Reels, Stories. No app, no login. Paste URL and save."/>
+<meta name="keywords" content="facebook video downloader, fb video download, download facebook video hd, private facebook video downloader, fb downloader online, facebook reel downloader"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://fbsavepro.com/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="FBSave Pro – Facebook Video Downloader"/>
+<meta property="og:description" content="Download any Facebook video in HD/SD. Fast, free, no login required."/>
+<meta property="og:url" content="https://fbsavepro.com/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="FBSave Pro – Facebook Video Downloader"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"FBSave Pro","url":"https://fbsavepro.com","applicationCategory":"MultimediaApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free online Facebook video downloader. Public & private videos in HD/SD.","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"84200"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I download a Facebook video?","acceptedAnswer":{"@type":"Answer","text":"Paste the Facebook video URL into FBSave Pro and click Download. Choose HD or SD quality."}},{"@type":"Question","name":"Can I download private Facebook videos?","acceptedAnswer":{"@type":"Answer","text":"Yes. Use the Private Video tab and provide your Facebook session cookies (c_user and xs)."}},{"@type":"Question","name":"Is FBSave Pro free?","acceptedAnswer":{"@type":"Answer","text":"Completely free. No registration, no limits, no watermarks."}}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --blue-brand:#1877F2;--blue-light:#4F9EF8;--cyan:#00D4FF;
+  --white:#FFFFFF;--gray-400:#9AA3B8;--gray-600:#5C6680;--gray-900:#0D1026;
+  --success:#12B76A;--error:#F04438;--warning:#F79009;--purple:#9B59FF;
+  --r-sm:8px;--r-md:14px;--r-lg:22px;--r-xl:32px;
+  --glow:0 0 60px rgba(0,212,255,.18);--t:all .22s cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--gray-900);color:var(--white);line-height:1.6;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+button{cursor:pointer;border:none;outline:none;font-family:inherit;}
+/* BG */
+.bg-mesh{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse 80% 60% at 10% 20%,rgba(24,119,242,.18) 0%,transparent 70%),
+             radial-gradient(ellipse 60% 50% at 90% 80%,rgba(0,212,255,.12) 0%,transparent 70%),var(--gray-900);}
+.bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:48px 48px;}
+.wrap{position:relative;z-index:1;}
+/* NAV */
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:16px 40px;
+  border-bottom:1px solid rgba(255,255,255,.07);backdrop-filter:blur(12px);
+  background:rgba(13,16,38,.7);position:sticky;top:0;z-index:100;}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-size:1.35rem;font-weight:700;letter-spacing:-.5px;}
+.logo-icon{width:36px;height:36px;border-radius:10px;background:var(--blue-brand);display:flex;align-items:center;justify-content:center;font-size:1.1rem;}
+.logo-accent{color:var(--cyan);}
+.nav-links{display:flex;align-items:center;gap:28px;}
+.nav-links a{font-size:.875rem;font-weight:500;color:var(--gray-400);transition:var(--t);}
+.nav-links a:hover{color:var(--white);}
+.nav-cta{background:var(--blue-brand);color:var(--white)!important;padding:9px 20px;border-radius:var(--r-sm);font-size:.875rem;font-weight:600;transition:var(--t);}
+.nav-cta:hover{background:var(--blue-light);transform:translateY(-1px);}
+.hamburger{display:none;background:none;padding:6px;flex-direction:column;gap:5px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--gray-400);border-radius:2px;transition:var(--t);}
+.mobile-menu{display:none;flex-direction:column;background:rgba(13,16,38,.97);border-bottom:1px solid rgba(255,255,255,.07);padding:12px 20px 20px;}
+.mobile-menu.show{display:flex;}
+.mobile-menu a{padding:12px 0;font-size:.93rem;font-weight:500;color:var(--gray-400);border-bottom:1px solid rgba(255,255,255,.05);transition:var(--t);}
+.mobile-menu a:hover{color:var(--white);}
+.mobile-menu .nav-cta{margin-top:12px;text-align:center;border-radius:var(--r-sm);}
+/* HERO */
+.hero{text-align:center;padding:88px 24px 56px;max-width:860px;margin:0 auto;}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.25);color:var(--cyan);border-radius:100px;padding:6px 16px;font-size:.78rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:28px;}
+.hero-badge::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--cyan);animation:pulse 1.8s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
+.hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:700;line-height:1.12;letter-spacing:-.03em;margin-bottom:20px;}
+.hero h1 .acc{background:linear-gradient(135deg,var(--blue-brand) 0%,var(--cyan) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-sub{font-size:clamp(.95rem,2vw,1.15rem);color:var(--gray-400);max-width:560px;margin:0 auto 48px;}
+.hero-stats{display:flex;justify-content:center;gap:40px;margin-bottom:48px;flex-wrap:wrap;}
+.hstat{text-align:center;}
+.hstat-num{font-family:'Space Grotesk',sans-serif;font-size:1.6rem;font-weight:700;}
+.hstat-label{font-size:.78rem;color:var(--gray-400);}
+/* CARD */
+.card{max-width:760px;margin:0 auto 48px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--r-xl);padding:36px;backdrop-filter:blur(20px);box-shadow:var(--glow);}
+/* TABS */
+.tabs{display:flex;background:rgba(255,255,255,.06);border-radius:var(--r-md);padding:5px;margin-bottom:28px;gap:4px;}
+.tab-btn{flex:1;padding:10px 8px;border-radius:var(--r-sm);font-size:.84rem;font-weight:600;color:var(--gray-400);background:transparent;transition:var(--t);display:flex;align-items:center;justify-content:center;gap:6px;}
+.tab-btn.active{background:var(--blue-brand);color:var(--white);box-shadow:0 2px 12px rgba(24,119,242,.4);}
+.tab-btn:hover:not(.active){color:var(--white);background:rgba(255,255,255,.08);}
+/* PRIVATE PANEL */
+.priv-panel{display:none;background:rgba(247,144,9,.07);border:1px solid rgba(247,144,9,.25);border-radius:var(--r-md);padding:18px 20px;margin-bottom:20px;}
+.priv-panel.show{display:block;}
+.priv-panel h4{font-size:.9rem;font-weight:700;color:var(--warning);margin-bottom:10px;}
+.priv-panel p{font-size:.82rem;color:var(--gray-400);margin-bottom:10px;}
+.cookie-input{width:100%;padding:10px 14px;background:rgba(255,255,255,.06);border:1.5px solid rgba(247,144,9,.3);border-radius:var(--r-sm);color:var(--white);font-size:.83rem;font-family:monospace;resize:vertical;min-height:80px;transition:var(--t);}
+.cookie-input:focus{outline:none;border-color:var(--warning);}
+.cookie-steps{margin-top:12px;}
+.cookie-steps strong{font-size:.8rem;color:var(--gray-400);}
+.cookie-steps ol{padding-left:18px;margin-top:6px;}
+.cookie-steps li{font-size:.8rem;color:var(--gray-600);margin-bottom:4px;line-height:1.5;}
+.cookie-steps code{background:rgba(255,255,255,.08);padding:1px 5px;border-radius:4px;font-size:.77rem;color:var(--cyan);}
+/* INPUT ROW */
+.input-row{display:flex;gap:12px;margin-bottom:20px;}
+.url-wrap{flex:1;position:relative;}
+.url-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--gray-400);font-size:1rem;pointer-events:none;}
+.url-input{width:100%;padding:15px 44px 15px 42px;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:var(--r-md);color:var(--white);font-size:.95rem;font-family:inherit;transition:var(--t);}
+.url-input::placeholder{color:var(--gray-600);}
+.url-input:focus{outline:none;border-color:var(--blue-brand);background:rgba(24,119,242,.08);box-shadow:0 0 0 3px rgba(24,119,242,.2);}
+.clear-btn{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;color:var(--gray-400);font-size:1rem;display:none;padding:4px;transition:var(--t);}
+.clear-btn:hover{color:var(--white);}
+.clear-btn.vis{display:block;}
+.dl-btn-main{padding:0 28px;background:linear-gradient(135deg,var(--blue-brand) 0%,#1560d4 100%);color:var(--white);font-size:.95rem;font-weight:700;border-radius:var(--r-md);display:flex;align-items:center;gap:8px;white-space:nowrap;transition:var(--t);box-shadow:0 4px 20px rgba(24,119,242,.4);min-width:140px;justify-content:center;min-height:52px;}
+.dl-btn-main:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(24,119,242,.55);}
+.dl-btn-main:active{transform:translateY(0);}
+.dl-btn-main:disabled{opacity:.65;pointer-events:none;}
+.spinner{width:18px;height:18px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;display:none;flex-shrink:0;}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* ALERTS */
+.alert{border-radius:var(--r-sm);padding:12px 16px;font-size:.85rem;margin-bottom:16px;display:none;align-items:flex-start;gap:10px;line-height:1.5;}
+.alert.show{display:flex;}
+.alert-error{background:rgba(240,68,56,.1);border:1px solid rgba(240,68,56,.3);color:#FF7B72;}
+.alert-success{background:rgba(18,183,106,.1);border:1px solid rgba(18,183,106,.3);color:#3DDC84;}
+/* PROGRESS */
+.progress-wrap{margin-bottom:16px;display:none;}
+.progress-wrap.show{display:block;}
+.prog-label{font-size:.8rem;color:var(--gray-400);margin-bottom:8px;display:flex;justify-content:space-between;}
+.prog-track{height:6px;background:rgba(255,255,255,.08);border-radius:100px;overflow:hidden;}
+.prog-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--blue-brand),var(--cyan));border-radius:100px;transition:width .3s ease;}
+/* RESULT */
+.result-area{display:none;}
+.result-area.show{display:block;}
+.video-info{display:flex;gap:16px;align-items:flex-start;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--r-md);padding:16px;margin-bottom:16px;}
+.video-thumb{width:120px;height:80px;border-radius:var(--r-sm);object-fit:cover;flex-shrink:0;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:2rem;overflow:hidden;}
+.video-thumb img{width:100%;height:100%;object-fit:cover;}
+.video-meta{flex:1;min-width:0;}
+.video-title{font-size:.9rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:6px;}
+.video-badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px;}
+.badge{font-size:.72rem;font-weight:600;padding:3px 10px;border-radius:100px;}
+.badge-blue{background:rgba(24,119,242,.2);color:var(--blue-light);border:1px solid rgba(24,119,242,.3);}
+.badge-green{background:rgba(18,183,106,.2);color:#3DDC84;border:1px solid rgba(18,183,106,.3);}
+.badge-gray{background:rgba(255,255,255,.08);color:var(--gray-400);border:1px solid rgba(255,255,255,.1);}
+.badge-purple{background:rgba(155,89,255,.2);color:#C084FC;border:1px solid rgba(155,89,255,.3);}
+.video-duration{font-size:.78rem;color:var(--gray-400);}
+.dl-options{display:flex;flex-direction:column;gap:10px;}
+.dl-opt{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:var(--r-md);padding:14px 18px;transition:var(--t);}
+.dl-opt:hover{border-color:var(--blue-brand);background:rgba(24,119,242,.06);}
+.dl-opt-left{display:flex;align-items:center;gap:12px;}
+.dl-icon{width:38px;height:38px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;flex-shrink:0;}
+.i-hd{background:rgba(24,119,242,.2);color:var(--blue-light);border:1px solid rgba(24,119,242,.3);}
+.i-sd{background:rgba(18,183,106,.2);color:#3DDC84;border:1px solid rgba(18,183,106,.3);}
+.i-mp3{background:rgba(155,89,255,.2);color:#C084FC;border:1px solid rgba(155,89,255,.3);}
+.dl-name{font-size:.9rem;font-weight:700;}
+.dl-desc{font-size:.78rem;color:var(--gray-400);}
+.dl-opt-right{display:flex;align-items:center;gap:10px;}
+.dl-size{font-size:.8rem;color:var(--gray-400);}
+.dl-action{padding:8px 18px;border-radius:var(--r-sm);font-size:.83rem;font-weight:700;display:flex;align-items:center;gap:6px;transition:var(--t);cursor:pointer;}
+.da-blue{background:var(--blue-brand);color:var(--white);box-shadow:0 2px 12px rgba(24,119,242,.4);}
+.da-blue:hover{background:var(--blue-light);transform:translateY(-1px);}
+.da-out{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.2);}
+.da-out:hover{border-color:var(--white);background:rgba(255,255,255,.06);}
+.da-pur{background:transparent;color:#C084FC;border:1.5px solid rgba(155,89,255,.3);}
+.da-pur:hover{background:rgba(155,89,255,.1);border-color:#C084FC;}
+.tos{text-align:center;font-size:.75rem;color:var(--gray-600);margin-top:16px;}
+.tos a{color:var(--gray-400);}
+/* SECTIONS */
+.sec{padding:80px 24px;}
+.sec-inner{max-width:1100px;margin:0 auto;}
+.eyebrow{text-align:center;font-size:.78rem;font-weight:700;color:var(--cyan);letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px;}
+.sec-title{text-align:center;font-family:'Space Grotesk',sans-serif;font-size:clamp(1.6rem,3.5vw,2.5rem);font-weight:700;letter-spacing:-.03em;margin-bottom:14px;}
+.sec-sub{text-align:center;color:var(--gray-400);font-size:1rem;max-width:520px;margin:0 auto 52px;}
+/* STEPS */
+.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;}
+.step-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--r-lg);padding:28px 24px;transition:var(--t);position:relative;overflow:hidden;}
+.step-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--blue-brand),transparent);opacity:0;transition:var(--t);}
+.step-card:hover{border-color:rgba(24,119,242,.4);transform:translateY(-4px);}
+.step-card:hover::before{opacity:1;}
+.step-num{font-family:'Space Grotesk',sans-serif;font-size:2.5rem;font-weight:800;color:rgba(24,119,242,.2);line-height:1;margin-bottom:16px;}
+.step-ico{width:48px;height:48px;border-radius:var(--r-sm);background:rgba(24,119,242,.15);border:1px solid rgba(24,119,242,.3);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:16px;}
+.step-card h3{font-size:1rem;font-weight:700;margin-bottom:8px;}
+.step-card p{font-size:.85rem;color:var(--gray-400);}
+/* FEATURES */
+.feat-bg{background:rgba(255,255,255,.02);}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
+.feat-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--r-lg);padding:24px;transition:var(--t);}
+.feat-card:hover{border-color:rgba(0,212,255,.3);background:rgba(0,212,255,.04);transform:translateY(-3px);}
+.feat-ico{font-size:1.8rem;margin-bottom:14px;}
+.feat-card h3{font-size:.95rem;font-weight:700;margin-bottom:8px;}
+.feat-card p{font-size:.83rem;color:var(--gray-400);}
+/* CHIPS */
+.chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;}
+.chip{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:8px 18px;font-size:.85rem;font-weight:600;color:var(--gray-400);transition:var(--t);}
+.chip:hover{border-color:var(--blue-brand);color:var(--white);}
+.chip-dot{width:8px;height:8px;border-radius:50%;background:var(--blue-brand);flex-shrink:0;}
+/* FAQ */
+.faq-list{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:12px;}
+.faq-item{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--r-md);overflow:hidden;}
+.faq-q{width:100%;text-align:left;padding:18px 20px;background:transparent;color:var(--white);font-size:.93rem;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:var(--t);}
+.faq-q:hover{background:rgba(255,255,255,.03);}
+.faq-arr{color:var(--gray-400);transition:transform .25s ease;flex-shrink:0;}
+.faq-item.open .faq-arr{transform:rotate(180deg);}
+.faq-ans{max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1);padding:0 20px;}
+.faq-ans p{font-size:.87rem;color:var(--gray-400);padding-bottom:18px;line-height:1.7;}
+.faq-item.open .faq-ans{max-height:300px;}
+/* STATS BANNER */
+.stats-banner{background:linear-gradient(135deg,rgba(24,119,242,.15) 0%,rgba(0,212,255,.08) 100%);border:1px solid rgba(24,119,242,.25);border-radius:var(--r-xl);padding:48px 40px;display:flex;flex-wrap:wrap;gap:40px;justify-content:space-around;align-items:center;margin:0 24px 80px;}
+.sstat{text-align:center;}
+.sstat-num{font-family:'Space Grotesk',sans-serif;font-size:2.8rem;font-weight:800;line-height:1;}
+.sstat-num span{color:var(--cyan);}
+.sstat-label{font-size:.85rem;color:var(--gray-400);margin-top:6px;}
+/* FOOTER */
+footer{border-top:1px solid rgba(255,255,255,.07);padding:48px 40px 32px;background:rgba(0,0,0,.2);}
+.foot-inner{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;}
+.foot-brand{max-width:280px;}
+.foot-brand p{font-size:.83rem;color:var(--gray-600);line-height:1.7;margin-top:12px;}
+.foot-col h4{font-size:.87rem;font-weight:700;margin-bottom:16px;}
+.foot-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.foot-col ul li a{font-size:.83rem;color:var(--gray-600);transition:var(--t);}
+.foot-col ul li a:hover{color:var(--white);}
+.foot-bottom{max-width:1100px;margin:32px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,.06);display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;}
+.foot-bottom p{font-size:.78rem;color:var(--gray-600);}
+/* TOAST */
+.toast-box{position:fixed;top:24px;right:24px;z-index:9999;display:flex;flex-direction:column;gap:10px;}
+.toast{background:rgba(20,24,52,.96);border:1px solid rgba(255,255,255,.1);border-radius:var(--r-md);padding:14px 20px;display:flex;align-items:center;gap:12px;font-size:.87rem;font-weight:500;backdrop-filter:blur(12px);transform:translateX(120%);opacity:0;transition:all .35s cubic-bezier(.4,0,.2,1);max-width:340px;pointer-events:none;}
+.toast.show{transform:translateX(0);opacity:1;}
+.t-success{border-left:3px solid var(--success);}
+.t-error{border-left:3px solid var(--error);}
+.t-info{border-left:3px solid var(--blue-brand);}
+/* RESPONSIVE */
+@media(max-width:768px){
+  .topbar{padding:14px 20px;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .hero{padding:56px 16px 36px;}
+  .hero-stats{gap:20px;}
+  .card{padding:20px 16px;border-radius:var(--r-lg);margin:0 16px 32px;}
+  .input-row{flex-direction:column;}
+  .dl-btn-main{min-height:48px;width:100%;}
+  .tab-btn{font-size:.75rem;padding:8px 4px;gap:3px;}
+  .stats-banner{padding:28px 20px;gap:24px;margin:0 16px 48px;}
+  .sstat-num{font-size:2rem;}
+  footer{padding:36px 20px 24px;}
+  .video-info{flex-direction:column;}
+  .video-thumb{width:100%;height:140px;}
+  .dl-opt{flex-direction:column;align-items:flex-start;gap:10px;}
+  .dl-opt-right{width:100%;justify-content:flex-end;}
+  .sec{padding:56px 16px;}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}}
+</style>
+</head>
+<body>
+<div class="bg-mesh" aria-hidden="true"></div>
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="toast-box" id="toastBox" aria-live="polite"></div>
+<div class="wrap">
+
+<!-- NAV -->
+<header>
+  <nav class="topbar" role="navigation">
+    <div class="logo">
+      <div class="logo-icon">&#9660;</div>
+      FBSave<span class="logo-accent">Pro</span>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="#how-it-works">How It Works</a>
+      <a href="#features">Features</a>
+      <a href="#faq">FAQ</a>
+      <a href="#downloader" class="nav-cta">Download Now</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#how-it-works">How It Works</a>
+    <a href="#features">Features</a>
+    <a href="#faq">FAQ</a>
+    <a href="#downloader" class="nav-cta">Download Now</a>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero" aria-labelledby="h1">
+  <div class="hero-badge">&#11044; Live &amp; Fast</div>
+  <h1 id="h1">The Fastest<br/><span class="acc">Facebook Video Downloader</span><br/>on the Web</h1>
+  <p class="hero-sub">Download any Facebook video &mdash; public or private &mdash; in HD &amp; SD instantly. No app, no login. Just paste and save.</p>
+  <div class="hero-stats">
+    <div class="hstat"><div class="hstat-num" id="ctr">0+</div><div class="hstat-label">Videos Downloaded</div></div>
+    <div class="hstat"><div class="hstat-num">4.9&#9733;</div><div class="hstat-label">User Rating</div></div>
+    <div class="hstat"><div class="hstat-num">&lt;3s</div><div class="hstat-label">Avg. Process Time</div></div>
+    <div class="hstat"><div class="hstat-num">100%</div><div class="hstat-label">Free Forever</div></div>
+  </div>
+</section>
+
+<!-- DOWNLOADER -->
+<section id="downloader">
+  <div class="card">
+    <!-- Tabs -->
+    <div class="tabs" role="tablist">
+      <button class="tab-btn active" data-tab="public" role="tab" aria-selected="true">&#127760; Public Video</button>
+      <button class="tab-btn" data-tab="private" role="tab" aria-selected="false">&#128274; Private Video</button>
+      <button class="tab-btn" data-tab="reel" role="tab" aria-selected="false">&#127916; Reel / Story</button>
+    </div>
+    <!-- Private panel -->
+    <div class="priv-panel" id="privPanel">
+      <h4>&#9888;&#65039; Private Video &mdash; Session Cookies Required</h4>
+      <p>Paste your Facebook session cookies (<strong>c_user</strong> and <strong>xs</strong>) below. We never store them.</p>
+      <textarea class="cookie-input" id="cookieInput" placeholder="c_user=YOUR_ID; xs=YOUR_XS_TOKEN; ..."></textarea>
+      <div class="cookie-steps">
+        <strong>How to get your cookies:</strong>
+        <ol>
+          <li>Open Facebook in Chrome &rarr; press <kbd>F12</kbd> &rarr; Application tab</li>
+          <li>Click Cookies &rarr; <code>https://www.facebook.com</code></li>
+          <li>Copy values of <code>c_user</code> and <code>xs</code></li>
+          <li>Paste above as: <code>c_user=XXXX; xs=YYYY</code></li>
+        </ol>
+      </div>
+    </div>
+    <!-- Alerts -->
+    <div class="alert alert-error" id="alertErr" role="alert"><span>&#9888;&#65039;</span><span id="errMsg">Please enter a valid Facebook video URL.</span></div>
+    <div class="alert alert-success" id="alertOk" role="status"><span>&#9989;</span><span>Video found! Choose your quality below.</span></div>
+    <!-- Input -->
+    <div class="input-row">
+      <div class="url-wrap">
+        <span class="url-icon">&#128279;</span>
+        <input type="url" class="url-input" id="urlInput" placeholder="Paste Facebook video URL here... (https://www.facebook.com/...)" autocomplete="off" spellcheck="false"/>
+        <button class="clear-btn" id="clearBtn">&#10005;</button>
+      </div>
+      <button class="dl-btn-main" id="fetchBtn">
+        <div class="spinner" id="spinner"></div>
+        <span id="btnTxt">&#11015; Download</span>
+      </button>
+    </div>
+    <!-- Progress -->
+    <div class="progress-wrap" id="progWrap">
+      <div class="prog-label"><span id="progLabel">Processing...</span><span id="progPct">0%</span></div>
+      <div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
+    </div>
+    <!-- Result -->
+    <div class="result-area" id="resultArea">
+      <div class="video-info">
+        <div class="video-thumb" id="thumbEl">&#127916;</div>
+        <div class="video-meta">
+          <div class="video-title" id="titleEl">Facebook Video</div>
+          <div class="video-badges" id="badgesEl">
+            <span class="badge badge-blue">MP4</span>
+            <span class="badge badge-green">HD Available</span>
+            <span class="badge badge-gray">Facebook</span>
+          </div>
+          <div class="video-duration" id="durEl"></div>
+        </div>
+      </div>
+      <div class="dl-options" id="dlOptions"></div>
+    </div>
+    <p class="tos">By using FBSave Pro you agree to our <a href="#">Terms of Service</a>. For personal use only.</p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="sec" id="how-it-works">
+  <div class="sec-inner">
+    <p class="eyebrow">Simple Process</p>
+    <h2 class="sec-title">Download in 3 Steps</h2>
+    <p class="sec-sub">No registration. No software. Just fast, clean downloads.</p>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="step-ico">&#128203;</div>
+        <h3>Copy the URL</h3>
+        <p>Open Facebook, find the video, tap Share &rarr; Copy Link. Works on mobile and desktop.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div class="step-ico">&#128229;</div>
+        <h3>Paste &amp; Fetch</h3>
+        <p>Paste the URL into FBSave Pro and click Download. Our server processes it in under 3 seconds.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="step-ico">&#128190;</div>
+        <h3>Choose &amp; Save</h3>
+        <p>Pick HD (1080p/720p), SD (480p/360p), or MP3 audio. The file downloads directly to your device.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-banner">
+  <div class="sstat"><div class="sstat-num">84<span>M+</span></div><div class="sstat-label">Videos Downloaded</div></div>
+  <div class="sstat"><div class="sstat-num">2.1<span>M</span></div><div class="sstat-label">Monthly Users</div></div>
+  <div class="sstat"><div class="sstat-num">99<span>.9%</span></div><div class="sstat-label">Uptime SLA</div></div>
+  <div class="sstat"><div class="sstat-num">&lt;3<span>s</span></div><div class="sstat-label">Processing Speed</div></div>
+</div>
+
+<!-- FEATURES -->
+<section class="sec feat-bg" id="features">
+  <div class="sec-inner">
+    <p class="eyebrow">Why Choose FBSave Pro</p>
+    <h2 class="sec-title">Everything You Need</h2>
+    <p class="sec-sub">Built for speed, privacy, and reliability &mdash; built to beat every competitor.</p>
+    <div class="feat-grid">
+      <div class="feat-card"><div class="feat-ico">&#9889;</div><h3>Lightning Fast</h3><p>Edge-optimized extraction engine. Average processing time under 3 seconds anywhere on Earth.</p></div>
+      <div class="feat-card"><div class="feat-ico">&#127909;</div><h3>HD 1080p Quality</h3><p>Download in original quality up to 1080p. Zero compression, zero quality loss.</p></div>
+      <div class="feat-card"><div class="feat-ico">&#128274;</div><h3>Private Video Support</h3><p>Download private and friends-only videos using secure cookie-based session authentication.</p></div>
+      <div class="feat-card"><div class="feat-ico">&#128241;</div><h3>All Devices Supported</h3><p>iPhone, Android, Windows, Mac &mdash; any browser, any device, anywhere.</p></div>
+      <div class="feat-card"><div class="feat-ico">&#128737;&#65039;</div><h3>Zero Data Stored</h3><p>URLs, cookies, and video data are processed in-memory and discarded immediately.</p></div>
+      <div class="feat-card"><div class="feat-ico">&#127916;</div><h3>Reels &amp; Stories</h3><p>Download Facebook Reels and Story videos with the same speed and quality as regular posts.</p></div>
+      <div class="feat-card"><div class="feat-ico">&#129306;</div><h3>100% Free, No Limits</h3><p>No sign-up, no daily caps, no watermarks. Download as many videos as you need.</p></div>
+      <div class="feat-card"><div class="feat-ico">&#127925;</div><h3>MP3 Audio Extraction</h3><p>Extract audio from any Facebook video as an MP3. Great for music, speeches, and podcasts.</p></div>
+      <div class="feat-card"><div class="feat-ico">&#127758;</div><h3>All URL Formats</h3><p>facebook.com, fb.watch, m.facebook.com &mdash; all regional Facebook domains supported.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SUPPORTED -->
+<section class="sec">
+  <div class="sec-inner">
+    <p class="eyebrow">Supported Content</p>
+    <h2 class="sec-title">What You Can Download</h2>
+    <p class="sec-sub">Every type of Facebook video content, supported out of the box.</p>
+    <div class="chips">
+      <div class="chip"><span class="chip-dot"></span>Public Videos</div>
+      <div class="chip"><span class="chip-dot"></span>Private Videos</div>
+      <div class="chip"><span class="chip-dot"></span>Facebook Reels</div>
+      <div class="chip"><span class="chip-dot"></span>Facebook Stories</div>
+      <div class="chip"><span class="chip-dot"></span>Group Videos</div>
+      <div class="chip"><span class="chip-dot"></span>Page Videos</div>
+      <div class="chip"><span class="chip-dot"></span>Live Replays</div>
+      <div class="chip"><span class="chip-dot"></span>Watch Videos</div>
+      <div class="chip"><span class="chip-dot"></span>Profile Videos</div>
+      <div class="chip"><span class="chip-dot"></span>HD 1080p</div>
+      <div class="chip"><span class="chip-dot"></span>SD 480p</div>
+      <div class="chip"><span class="chip-dot"></span>MP3 Audio</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq">
+  <div class="sec-inner">
+    <p class="eyebrow">Help Center</p>
+    <h2 class="sec-title">Frequently Asked Questions</h2>
+    <p class="sec-sub">Everything you need to know about FBSave Pro.</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">How do I download a Facebook video?<span class="faq-arr">&#9660;</span></button>
+        <div class="faq-ans"><p>Copy the Facebook video URL from the address bar or Share &rarr; Copy Link. Paste it into FBSave Pro and click Download. Our server fetches the video in seconds &mdash; then choose HD or SD to save.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Can I download private Facebook videos?<span class="faq-arr">&#9660;</span></button>
+        <div class="faq-ans"><p>Yes. Switch to the "Private Video" tab, paste your Facebook session cookies (c_user and xs from browser DevTools). We use them only for the one-time fetch and never store them anywhere.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Is FBSave Pro free?<span class="faq-arr">&#9660;</span></button>
+        <div class="faq-ans"><p>Completely free. No account, no subscription, no download limits, no watermarks. Ad-supported to keep the service free forever.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">What quality options are available?<span class="faq-arr">&#9660;</span></button>
+        <div class="faq-ans"><p>We offer all quality versions Facebook provides: HD (1080p/720p) and SD (480p/360p) depending on the original upload. Audio-only MP3 extraction is also available.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Does it work on iPhone and Android?<span class="faq-arr">&#9660;</span></button>
+        <div class="faq-ans"><p>Yes. Fully mobile-optimized. Open in Safari (iPhone) or Chrome (Android), paste your URL, and download. On iOS, tap "Download" from the browser prompt to save to Files.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Why is my URL not working?<span class="faq-arr">&#9660;</span></button>
+        <div class="faq-ans"><p>Make sure you copy the full URL with https://. For private videos, ensure your cookies are from an active logged-in session. Some DRM-protected or region-locked videos cannot be downloaded by any tool.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <div class="logo"><div class="logo-icon">&#9660;</div>FBSave<span class="logo-accent">Pro</span></div>
+      <p>The fastest and most reliable Facebook video downloader. Supporting public, private, reels &amp; stories &mdash; free forever.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="#downloader">FB Video Downloader</a></li>
+        <li><a href="#downloader">FB Reel Downloader</a></li>
+        <li><a href="#downloader">Private Video Downloader</a></li>
+        <li><a href="#downloader">FB Audio Extractor</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#faq">Troubleshooting</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Cookie Policy</a></li>
+        <li><a href="#">DMCA</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <p>&copy; 2025 FBSave Pro. Not affiliated with Meta Platforms, Inc.</p>
+    <p>Made with &#10084;&#65039; for fast, free downloads</p>
+  </div>
+</footer>
+
+</div><!-- .wrap -->
+
+<script>
+// ── CONFIG ── Change this if your backend runs on a different port
+var API_BASE = window.location.origin;
+// If running frontend from file:// during development, set to:
+// var API_BASE = 'http://localhost:5000';
+
+// ── UTILS ──
+function $(id){ return document.getElementById(id); }
+function qsa(sel){ return document.querySelectorAll(sel); }
+
+function showToast(msg, type, dur){
+  type = type||'info'; dur = dur||4000;
+  var box = $('toastBox');
+  var t = document.createElement('div');
+  var icons = {success:'✅', error:'❌', info:'ℹ️'};
+  t.className = 'toast t-'+type;
+  t.innerHTML = '<span>'+(icons[type]||'ℹ️')+'</span><span>'+msg+'</span>';
+  box.appendChild(t);
+  requestAnimationFrame(function(){ requestAnimationFrame(function(){ t.classList.add('show'); }); });
+  setTimeout(function(){ t.classList.remove('show'); setTimeout(function(){ t.remove(); }, 400); }, dur);
+}
+
+// ── COUNTER ANIMATION ──
+var ctrEl = $('ctr');
+var ctrDone = false;
+var ctrIO = new IntersectionObserver(function(entries){
+  if(entries[0].isIntersecting && !ctrDone){
+    ctrDone = true;
+    var start=0, end=84200000, dur=2000, step=end/(dur/16);
+    function tick(){
+      start = Math.min(start+step, end);
+      ctrEl.textContent = Math.floor(start/1000000).toFixed(1)+'M+';
+      if(start < end) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+    ctrIO.disconnect();
+  }
+}, {threshold:0.3});
+ctrIO.observe(ctrEl);
+
+// ── HAMBURGER ──
+var ham = $('hamburger'), mob = $('mobileMenu');
+ham.addEventListener('click', function(){
+  var open = mob.classList.toggle('show');
+  ham.setAttribute('aria-expanded', String(open));
+});
+mob.querySelectorAll('a').forEach(function(a){
+  a.addEventListener('click', function(){
+    mob.classList.remove('show');
+    ham.setAttribute('aria-expanded','false');
+  });
+});
+
+// ── TABS ──
+var tabs = qsa('.tab-btn');
+var privPanel = $('privPanel');
+var activeTab = 'public';
+tabs.forEach(function(btn){
+  btn.addEventListener('click', function(){
+    tabs.forEach(function(b){ b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+    btn.classList.add('active'); btn.setAttribute('aria-selected','true');
+    activeTab = btn.dataset.tab;
+    if(activeTab === 'private'){ privPanel.classList.add('show'); } else { privPanel.classList.remove('show'); }
+    resetUI();
+  });
+});
+
+// ── URL INPUT ──
+var urlIn = $('urlInput'), clearBtn = $('clearBtn');
+urlIn.addEventListener('input', function(){
+  clearBtn.classList.toggle('vis', urlIn.value.length > 0);
+});
+clearBtn.addEventListener('click', function(){
+  urlIn.value=''; clearBtn.classList.remove('vis'); resetUI(); urlIn.focus();
+});
+
+// ── VALIDATE ──
+function isFBUrl(url){
+  try{
+    var u = new URL(url.trim());
+    return /\b(facebook\.com|fb\.watch|fb\.com|m\.facebook\.com)\b/.test(u.hostname);
+  } catch(e){ return false; }
+}
+
+// ── RESET ──
+function resetUI(){
+  $('alertErr').classList.remove('show');
+  $('alertOk').classList.remove('show');
+  $('progWrap').classList.remove('show');
+  $('resultArea').classList.remove('show');
+  var btn = $('fetchBtn');
+  btn.disabled = false;
+  $('spinner').style.display='none';
+  $('btnTxt').textContent='⬇ Download';
+}
+
+// ── PROGRESS ──
+function setProgress(pct, label){
+  $('progFill').style.width = pct+'%';
+  $('progLabel').textContent = label;
+  $('progPct').textContent = pct+'%';
+}
+
+// ── BUILD RESULT UI ──
+function buildResult(data){
+  // Thumbnail
+  var thumbEl = $('thumbEl');
+  if(data.thumbnail){
+    thumbEl.innerHTML = '<img src="'+data.thumbnail+'" alt="Video thumbnail" onerror="this.parentNode.innerHTML=\'&#127916;\'">';
+  } else {
+    thumbEl.innerHTML = '&#127916;';
+  }
+  // Title
+  $('titleEl').textContent = data.title || 'Facebook Video';
+  // Duration
+  $('durEl').textContent = data.duration ? '&#8987; '+data.duration : '';
+  // Badges
+  var badges = '<span class="badge badge-blue">MP4</span>';
+  if(data.hd_url) badges += '<span class="badge badge-green">HD Available</span>';
+  if(data.sd_url) badges += '<span class="badge badge-gray">SD Available</span>';
+  $('badgesEl').innerHTML = badges;
+
+  // Download options
+  var opts = $('dlOptions');
+  opts.innerHTML = '';
+
+  if(data.hd_url){
+    opts.appendChild(makeDlRow({
+      iconClass:'i-hd', iconText:'HD',
+      name:'HD Quality', desc:'1080p / 720p &middot; MP4',
+      size:'~45&ndash;120 MB', btnClass:'da-blue', btnText:'&#11015; Download HD',
+      url: data.hd_url, filename:'fbsavepro_hd.mp4'
+    }));
+  }
+  if(data.sd_url){
+    opts.appendChild(makeDlRow({
+      iconClass:'i-sd', iconText:'SD',
+      name:'SD Quality', desc:'480p / 360p &middot; MP4',
+      size:'~8&ndash;35 MB', btnClass:'da-out', btnText:'&#11015; Download SD',
+      url: data.sd_url, filename:'fbsavepro_sd.mp4'
+    }));
+  }
+  // MP3 (uses SD url with proxy, browser extracts audio via download)
+  var audioUrl = data.sd_url || data.hd_url;
+  if(audioUrl){
+    opts.appendChild(makeDlRow({
+      iconClass:'i-mp3', iconText:'&#9835;',
+      name:'Audio Only', desc:'128kbps &middot; MP3',
+      size:'~3&ndash;8 MB', btnClass:'da-pur', btnText:'&#11015; Download MP3',
+      url: audioUrl, filename:'fbsavepro_audio.mp3'
+    }));
+  }
+
+  $('resultArea').classList.add('show');
+}
+
+function makeDlRow(cfg){
+  var div = document.createElement('div');
+  div.className = 'dl-opt';
+  div.innerHTML =
+    '<div class="dl-opt-left">'+
+      '<div class="dl-icon '+cfg.iconClass+'">'+cfg.iconText+'</div>'+
+      '<div><div class="dl-name">'+cfg.name+'</div><div class="dl-desc">'+cfg.desc+'</div></div>'+
+    '</div>'+
+    '<div class="dl-opt-right">'+
+      '<span class="dl-size">'+cfg.size+'</span>'+
+      '<button class="dl-action '+cfg.btnClass+'" data-url="'+escAttr(cfg.url)+'" data-filename="'+escAttr(cfg.filename)+'">'+cfg.btnText+'</button>'+
+    '</div>';
+  div.querySelector('.dl-action').addEventListener('click', function(){
+    triggerDownload(cfg.url, cfg.filename);
+  });
+  return div;
+}
+
+function escAttr(s){ return String(s).replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+
+function triggerDownload(videoUrl, filename){
+  showToast('Starting download... Please wait.', 'info', 3000);
+  // Option 1: Use backend proxy (avoids CORS on direct CDN links)
+  var proxyUrl = API_BASE+'/api/proxy-download?url='+encodeURIComponent(videoUrl)+'&filename='+encodeURIComponent(filename);
+  var a = document.createElement('a');
+  a.href = proxyUrl;
+  a.download = filename;
+  a.target = '_blank';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(function(){ showToast('Download started! Check your downloads folder.', 'success'); }, 800);
+}
+
+// ── MAIN FETCH HANDLER ──
+function handleFetch(){
+  resetUI();
+  var url = urlIn.value.trim();
+  var cookies = ($('cookieInput').value||'').trim();
+
+  if(!url){
+    $('errMsg').textContent = 'Please paste a Facebook video URL first.';
+    $('alertErr').classList.add('show');
+    urlIn.focus(); return;
+  }
+  if(!isFBUrl(url)){
+    $('errMsg').textContent = 'Invalid URL. Please use a valid Facebook link (facebook.com, fb.watch, m.facebook.com).';
+    $('alertErr').classList.add('show');
+    urlIn.focus(); return;
+  }
+  if(activeTab === 'private' && (!cookies || cookies.indexOf('c_user')===-1)){
+    $('errMsg').textContent = 'For private videos, paste your Facebook cookies including c_user and xs values.';
+    $('alertErr').classList.add('show'); return;
+  }
+
+  // Start loading
+  var btn = $('fetchBtn');
+  btn.disabled = true;
+  $('spinner').style.display = 'block';
+  $('btnTxt').textContent = 'Processing...';
+  $('progWrap').classList.add('show');
+  setProgress(10, 'Connecting to server...');
+
+  // Fake progressive UI while real request runs
+  var prog = 10;
+  var labels = ['Connecting to Facebook...','Extracting video data...','Parsing quality streams...','Preparing download links...'];
+  var li = 0;
+  var progTimer = setInterval(function(){
+    if(prog < 85){
+      prog += Math.random()*12 + 3;
+      prog = Math.min(prog, 85);
+      setProgress(Math.floor(prog), labels[Math.min(li, labels.length-1)]);
+      li++;
+    }
+  }, 600);
+
+  // Real API call
+  fetch(API_BASE+'/api/fetch', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({url:url, cookies:cookies})
+  })
+  .then(function(res){ return res.json(); })
+  .then(function(data){
+    clearInterval(progTimer);
+    if(data.success){
+      setProgress(100, 'Done!');
+      setTimeout(function(){
+        $('progWrap').classList.remove('show');
+        $('alertOk').classList.add('show');
+        buildResult(data);
+        $('resultArea').scrollIntoView({behavior:'smooth', block:'nearest'});
+        showToast('Video found! Choose your quality.', 'success');
+      }, 400);
+    } else {
+      $('progWrap').classList.remove('show');
+      $('errMsg').textContent = data.error || 'Failed to fetch video.';
+      $('alertErr').classList.add('show');
+      showToast(data.error || 'Could not fetch video.', 'error');
+    }
+  })
+  .catch(function(err){
+    clearInterval(progTimer);
+    $('progWrap').classList.remove('show');
+    var msg = 'Network error. Make sure the backend server is running at '+API_BASE;
+    $('errMsg').textContent = msg;
+    $('alertErr').classList.add('show');
+    showToast(msg, 'error', 6000);
+  })
+  .finally(function(){
+    btn.disabled = false;
+    $('spinner').style.display = 'none';
+    $('btnTxt').textContent = '⬇ Download';
+  });
+}
+
+$('fetchBtn').addEventListener('click', handleFetch);
+urlIn.addEventListener('keydown', function(e){ if(e.key==='Enter') handleFetch(); });
+
+// ── FAQ ACCORDION ──
+qsa('.faq-q').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var item = btn.closest('.faq-item');
+    var open = item.classList.contains('open');
+    qsa('.faq-item').forEach(function(i){
+      i.classList.remove('open');
+      i.querySelector('.faq-q').setAttribute('aria-expanded','false');
+    });
+    if(!open){ item.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+  });
+});
+
+// ── SCROLL REVEAL ──
+var revEls = qsa('.step-card,.feat-card,.faq-item,.chip,.sstat');
+revEls.forEach(function(el){
+  el.style.opacity='0'; el.style.transform='translateY(20px)';
+  el.style.transition='opacity .5s ease, transform .5s ease';
+});
+var revIO = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      e.target.style.opacity='1'; e.target.style.transform='translateY(0)';
+      revIO.unobserve(e.target);
+    }
+  });
+}, {threshold:0.1, rootMargin:'0px 0px -30px 0px'});
+revEls.forEach(function(el){ revIO.observe(el); });
+
+// ── AUTO PASTE ──
+document.addEventListener('paste', function(e){
+  var txt = (e.clipboardData||window.clipboardData).getData('text');
+  if(txt && isFBUrl(txt) && document.activeElement !== $('cookieInput') && document.activeElement !== urlIn){
+    urlIn.value = txt;
+    clearBtn.classList.add('vis');
+    showToast('Facebook URL detected and auto-filled!', 'info', 3000);
+  }
+});
+</script>
+</body>
+</html>
 
